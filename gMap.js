@@ -179,7 +179,7 @@ var bridge = new OculusBridge( {
         console.log("X: " + 180*quatValues.x + "Y: " + 180*quatValues.y + "Z: " + 180*quatValues.z + "W: " + 180*quatValues.w);
 
         myPano.setPov({
-          heading: 180*quatValues.z
+          heading: 180*quatValues.z,
           pitch: 180*quatValues.x
         });
     }
