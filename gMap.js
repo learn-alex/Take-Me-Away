@@ -12,6 +12,7 @@ var myPano;
 var markerArray = [];
 var stepDisplay;
 var myLatlng;
+var go = true;
 
 function initialize() {
     myLatlng = new google.maps.LatLng(34.12942,-118.775398);
@@ -70,7 +71,7 @@ function calcDest() {
     var request = {
         origin:start,
         destination:end,
-        travelMode: google.maps.TravelMode.WALKING
+        travelMode: google.maps.TravelMode.DRIVING
   };
 
   directionsService.route(request, function(result, status) {
@@ -128,10 +129,18 @@ function moveForward() {
   console.log("moving forward?");
 }
 
+var interval; 
 function setTimer() {
-    setInterval(function(){ 
+    if (go) {
+        interval = setInterval(function(){ 
         moveForward();
-    }, 2000);
+        }, 300);
+        go = !go;
+    } else {
+        clearInterval(interval);
+        go = !go;
+    }
+
 
 }
 
