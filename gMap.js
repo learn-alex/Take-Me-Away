@@ -14,12 +14,12 @@ function initialize() {
 }
 
 function calcDest() {
-    var curr = document.getElementById('curr').value;
-    var dest = document.getElementsById('dest').value; 
+    // var curr = document.getElementById('curr').value;
+    var dest = document.getElementById('dest').value; 
 
-    console.log("curr:" + curr);
+    // console.log("curr:" + curr);
     console.log("dest:" + dest);
-    
+
 }
 
 
