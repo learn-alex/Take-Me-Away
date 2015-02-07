@@ -8,9 +8,10 @@
 var directionsDisplay;
 var directionsService = new google.maps.DirectionsService();
 var map;
+var myPano;
 
 function initialize() {
-    var myLatlng = new google.maps.LatLng(42.345573,-71.098326);
+    var myLatlng = new google.maps.LatLng(34.12942,-118.775398);
 
     directionsDisplay = new google.maps.DirectionsRenderer();
     
@@ -32,7 +33,7 @@ google.maps.event.addDomListener(window, 'load', initialize);
 	var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
     directionsDisplay.setMap(map);
 
- 	var myPano = new google.maps.StreetViewPanorama(document.getElementById('street-canvas'),
+ 	myPano = new google.maps.StreetViewPanorama(document.getElementById('street-canvas'),
       		panoramaOptions);
   	myPano.setVisible(true);
 
@@ -65,19 +66,37 @@ function calcDest() {
     }
   });
 
+  // moveForward();
+  setTimer();
+
 }
 
-var iconBase = 'https://maps.google.com/mapfiles/kml/shapes/';
+function difference(link) {
+  return Math.abs(myPano.pov.heading%360 - link.heading);
+}
 
-var myLatlng = new google.maps.LatLng(-25.363882,131.044922);
+function moveForward() {
+  var curr;
+  for(i=0; i < myPano.links.length; i++) {
+    var differ = difference(myPano.links[i]);
+    if(curr == undefined) {
+      curr = myPano.links[i];
+    }
 
-var marker = new google.maps.Marker({
-    position: myLatlng,
-    map: map,
-    title:"Hello World!"
-});
+    if(difference(curr) > difference(myPano.links[i])) {
+      curr = curr = myPano.links[i];
+    }
+  }
+  myPano.setPano(curr.pano);
+  console.log("moving forward?");
+}
 
-marker.setMap(map);
+function setTimer() {
+    setInterval(function(){ 
+        moveForward();
+    }, 1000);
+
+}
 
 google.maps.event.addDomListener(window, 'load', initialize);
     
