@@ -10,6 +10,8 @@ var directionsService = new google.maps.DirectionsService();
 var map;
 
 function initialize() {
+    var myLatlng = new google.maps.LatLng(-25.363882,131.044922);
+
     directionsDisplay = new google.maps.DirectionsRenderer();
 
 	var mapOptions = {
@@ -18,6 +20,13 @@ function initialize() {
 	};
 	var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
     directionsDisplay.setMap(map);
+
+    var marker = new google.maps.Marker({
+      position: myLatlng,
+      map: map,
+      title: 'Marker'
+  });
+
 }
 
 function calcDest() {
@@ -40,6 +49,18 @@ function calcDest() {
   });
 
 }
+
+var iconBase = 'https://maps.google.com/mapfiles/kml/shapes/';
+
+var myLatlng = new google.maps.LatLng(-25.363882,131.044922);
+
+var marker = new google.maps.Marker({
+    position: myLatlng,
+    map: map,
+    title:"Hello World!"
+});
+
+marker.setMap(map);
 
 google.maps.event.addDomListener(window, 'load', initialize);
     
