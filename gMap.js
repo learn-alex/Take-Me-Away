@@ -13,6 +13,7 @@ var markerArray = [];
 var stepDisplay;
 var myLatlng;
 var go = true;
+var moveForward;
 
 function initialize() {
     myLatlng = new google.maps.LatLng(34.12942,-118.775398);
@@ -83,7 +84,8 @@ function calcDest() {
     }
   });
 
-  setTimer();
+  // setTimer();
+  moveForward = true;
 
 }
 
@@ -182,6 +184,11 @@ var bridge = new OculusBridge( {
           heading: -180*quatValues.y,
           pitch: 180*quatValues.x
         });
+        console.log("GO?: " + go);
+        if(go) {
+            moveForward();
+            console.log("trying to move forward");
+        }
     }
 });
 
