@@ -8,7 +8,7 @@
 var directionsDisplay;
 var directionsService = new google.maps.DirectionsService();
 var map;
-var myPano;
+var myPano[2];
 var markerArray = [];
 var stepDisplay;
 var myLatlng;
@@ -42,20 +42,13 @@ function initialize() {
         map: map
     }
     // directionsDisplay = new google.maps.DirectionsRenderer(rendererOptions);
-
- 	myPano = new google.maps.StreetViewPanorama(document.getElementById('street-canvas'),
+    for (int i = 0; i < 2; i++) {
+ 	myPano[i] = new google.maps.StreetViewPanorama(document.getElementById('street-canvas'),
       		panoramaOptions);
-  	myPano.setVisible(true);
+  	myPano[i].setVisible(true);
 
-  //   var marker = new google.maps.Marker({
-  //     position: myLatlng,
-  //     map: map,
-  //     title: 'Marker'
-  // });
-
-    // marker.setPosition(myLatlng);
-
-    map.setStreetView(myPano);
+    	map.setStreetView(myPano[i]);
+    }
 
 }
 
