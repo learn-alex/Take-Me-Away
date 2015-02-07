@@ -12,7 +12,7 @@ var myPano;
 var markerArray = [];
 var stepDisplay;
 var myLatlng;
-var go = true;
+var go = false;
 var moveForward;
 
 function initialize() {
@@ -86,6 +86,7 @@ function calcDest() {
 
   // setTimer();
   // moveForward = true;
+  go = !go;
 
 }
 
