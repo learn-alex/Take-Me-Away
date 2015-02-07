@@ -95,6 +95,12 @@ function showSteps(directionResult) {
             position: myRoute.steps[i].start_location,
             map: map
         });
+
+        var marker = new google.maps.Marker({
+            position: myRoute.steps[i].start_location,
+            size: 1000,
+            map: myPano
+        });
         attachInstructionText(marker, myRoute.steps[i].instructions);
         markerArray[i] = marker;
     }
