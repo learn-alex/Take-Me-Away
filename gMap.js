@@ -139,7 +139,7 @@ var interval;
 function setTimer() {
     if (go) {
         interval = setInterval(function(){ 
-        moveForward();
+        // moveForward();
         }, 500);
         go = !go;
     } else {
