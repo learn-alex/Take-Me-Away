@@ -159,6 +159,10 @@ var bridge = new OculusBridge( {
     "onDisconnect" : function() {
         console.log("good bye Oculus.");
     },
+    "onOrientationUpdate" : function(quatValues) {
+        // giantSquid.quaternion.set(quatValues.x, quatValues.y, quatValues.z, quatValues.w);
+        console.log("UPDATE: " + quatValies.x);
+    }
 });
 
 bridge.connect();
