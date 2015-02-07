@@ -135,7 +135,6 @@ function moveForward() {
     }
   }
   myPano.setPano(curr.pano);
-  console.log("moving forward?");
 }
 
 var interval; 
@@ -187,8 +186,8 @@ var bridge = new OculusBridge( {
         });
         console.log("outside: " + go);
         if(go) {
-            // moveForward();
             console.log("moving forward");
+            moveForward();
         }
     }
 });
