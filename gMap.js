@@ -80,7 +80,7 @@ function calcDest() {
       directionsDisplay.setDirections(result);
       showSteps(result);
     } else {
-        window.alert("invalid loc");
+        // window.alert("invalid loc");
     }
   });
 
