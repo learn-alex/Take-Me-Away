@@ -10,23 +10,23 @@ var directionsService = new google.maps.DirectionsService();
 var map;
 
 function initialize() {
-    var myLatlng = new google.maps.LatLng(-25.363882,131.044922);
+    var myLatlng = new google.maps.LatLng(42.345573,-71.098326);
 
     directionsDisplay = new google.maps.DirectionsRenderer();
     
-    var streetMap = new google.maps.LatLng(37.869260, -122.254811);
+    var streetMap = myLatlng;
     var panoramaOptions = {
-    	position: streetMap,
+    	position: myLatlng,
     	pov: {
-      	  heading: 165,
-      	  pitch: 0
+      	  heading: 34,
+      	  pitch: 10
     	},
     	zoom: 1
     };
 
 google.maps.event.addDomListener(window, 'load', initialize);
 	var mapOptions = {
-		center: { lat: -34.397, lng: 150.644},
+		center: myLatlng,
 		zoom: 8
 	};
 	var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
@@ -41,6 +41,8 @@ google.maps.event.addDomListener(window, 'load', initialize);
       map: map,
       title: 'Marker'
   });
+
+    map.setStreetView(myPano);
 
 }
 
