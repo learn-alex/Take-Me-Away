@@ -25,10 +25,10 @@ if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
   let s:wipebuf = bufnr('%')
 endif
 set shortmess=aoO
-badd +0 basic.html
-badd +0 gMaps.js
-badd +0 gMap.js
-badd +0 styles.css
+badd +18 basic.html
+badd +1 gMaps.js
+badd +45 gMap.js
+badd +1 styles.css
 args basic.html
 edit gMap.js
 set splitbelow splitright
@@ -44,11 +44,11 @@ set nosplitbelow
 set nosplitright
 wincmd t
 set winheight=1 winwidth=1
-exe 'vert 1resize ' . ((&columns * 98 + 98) / 197)
+exe 'vert 1resize ' . ((&columns * 123 + 98) / 197)
 exe '2resize ' . ((&lines * 24 + 26) / 52)
-exe 'vert 2resize ' . ((&columns * 98 + 98) / 197)
+exe 'vert 2resize ' . ((&columns * 73 + 98) / 197)
 exe '3resize ' . ((&lines * 25 + 26) / 52)
-exe 'vert 3resize ' . ((&columns * 98 + 98) / 197)
+exe 'vert 3resize ' . ((&columns * 73 + 98) / 197)
 argglobal
 setlocal keymap=
 setlocal noarabic
@@ -113,7 +113,8 @@ setlocal matchpairs=(:),{:},[:]
 setlocal modeline
 setlocal modifiable
 setlocal nrformats=octal,hex
-setlocal nonumber
+set number
+setlocal number
 setlocal numberwidth=4
 setlocal omnifunc=javascriptcomplete#CompleteJS
 setlocal path=
@@ -150,12 +151,12 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 3 - ((2 * winheight(0) + 25) / 50)
+let s:l = 53 - ((47 * winheight(0) + 25) / 50)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-3
-normal! 02|
+53
+normal! 05|
 wincmd w
 argglobal
 edit basic.html
@@ -259,12 +260,12 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 18 - ((17 * winheight(0) + 12) / 24)
+let s:l = 11 - ((10 * winheight(0) + 12) / 24)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-18
-normal! 0
+11
+normal! 013|
 wincmd w
 argglobal
 edit styles.css
@@ -375,12 +376,11 @@ normal! zt
 9
 normal! 09|
 wincmd w
-2wincmd w
-exe 'vert 1resize ' . ((&columns * 98 + 98) / 197)
+exe 'vert 1resize ' . ((&columns * 123 + 98) / 197)
 exe '2resize ' . ((&lines * 24 + 26) / 52)
-exe 'vert 2resize ' . ((&columns * 98 + 98) / 197)
+exe 'vert 2resize ' . ((&columns * 73 + 98) / 197)
 exe '3resize ' . ((&lines * 25 + 26) / 52)
-exe 'vert 3resize ' . ((&columns * 98 + 98) / 197)
+exe 'vert 3resize ' . ((&columns * 73 + 98) / 197)
 tabnext 1
 if exists('s:wipebuf')
   silent exe 'bwipe ' . s:wipebuf

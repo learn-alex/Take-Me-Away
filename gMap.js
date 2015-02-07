@@ -1,5 +1,5 @@
 /*
- * Google Maps API
+ * Google Maps AP
  * HopHacks Spring 2015
  *
  * street view directions
@@ -8,7 +8,7 @@
 var directionsDisplay;
 var directionsService = new google.maps.DirectionsService();
 var map;
-var myPano[2];
+var myPano = [2];
 var markerArray = [];
 var stepDisplay;
 var myLatlng;
@@ -36,16 +36,18 @@ function initialize() {
 		zoom: 8
 	};
 	map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
-    directionsDisplay.setMap(map);
+	directionsDisplay.setMap(map);
 
     var rendererOptions = {
         map: map
     }
-    // directionsDisplay = new google.maps.DirectionsRenderer(rendererOptions);
-    for (int i = 0; i < 2; i++) {
- 	myPano[i] = new google.maps.StreetViewPanorama(document.getElementById('street-canvas'),
-      		panoramaOptions);
-  	myPano[i].setVisible(true);
+    
+    alert("test");
+    console.log("am i running?");
+    for (i = 0; i < 2; i++) {
+ 		alert("hello" + i);
+		myPano[i] = new google.maps.StreetViewPanorama(document.getElementById('street-canvas'),panoramaOptions);
+  		myPano[i].setVisible(true);
 
     	map.setStreetView(myPano[i]);
     }
