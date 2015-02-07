@@ -11,13 +11,30 @@ var map;
 
 function initialize() {
     directionsDisplay = new google.maps.DirectionsRenderer();
+    
+    var streetMap = new google.maps.LatLng(37.869260, -122.254811);
+    var panoramaOptions = {
+    	position: streetMap,
+    	pov: {
+      	  heading: 165,
+      	  pitch: 0
+    	},
+    	zoom: 1
+    };
 
+google.maps.event.addDomListener(window, 'load', initialize);
 	var mapOptions = {
 		center: { lat: -34.397, lng: 150.644},
 		zoom: 8
 	};
 	var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
     directionsDisplay.setMap(map);
+
+ 	var myPano = new google.maps.StreetViewPanorama(document.getElementById('street-canvas'),
+      		panoramaOptions);
+  	myPano.setVisible(true);
+
+
 }
 
 function calcDest() {
