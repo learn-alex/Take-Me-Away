@@ -161,7 +161,7 @@ var bridge = new OculusBridge( {
     },
     "onOrientationUpdate" : function(quatValues) {
         // giantSquid.quaternion.set(quatValues.x, quatValues.y, quatValues.z, quatValues.w);
-        console.log("X: " + 180*quatValues.x + "Y: " + 180*quatValues.y) + "Z: " + 180*quatValues.z + "W: " + 180*quatValues.w);
+        console.log("X: " + 180*quatValues.x + "Y: " + 180*quatValues.y + "Z: " + 180*quatValues.z + "W: " + 180*quatValues.w);
 
         if (180*quatValues.x > 0) {
             moveForward();
