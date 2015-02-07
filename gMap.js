@@ -139,7 +139,7 @@ var interval;
 function setTimer() {
     if (go) {
         interval = setInterval(function(){ 
-        rotate90();
+        moveForward();
         }, 500);
         go = !go;
     } else {
