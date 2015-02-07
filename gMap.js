@@ -150,5 +150,12 @@ function setTimer() {
 
 }
 
+var bridge = new OculusBridge({
+    "onOrientationUpdate" : function(quatValues) {
+        giantSquid.quaternion.set(quatValues.x, quatValues.y, quatValues.z, quatValues.w);
+    }
+});
+bridge.connect();
+
 google.maps.event.addDomListener(window, 'load', initialize);
     
