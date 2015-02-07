@@ -9,3 +9,11 @@ html, body {
 	margin: 0;
 }
 
+#map-canvas {
+    float:left;
+}
+
+#street-canvas {
+    float: right;
+}
+
