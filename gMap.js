@@ -85,7 +85,7 @@ function calcDest() {
   });
 
   // setTimer();
-  moveForward = true;
+  // moveForward = true;
 
 }
 
@@ -184,10 +184,10 @@ var bridge = new OculusBridge( {
           heading: -180*quatValues.y,
           pitch: 180*quatValues.x
         });
-        console.log("GO?: " + go);
+        console.log("outside: " + go);
         if(go) {
-            moveForward();
-            console.log("trying to move forward");
+            // moveForward();
+            console.log("moving forward");
         }
     }
 });
