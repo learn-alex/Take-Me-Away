@@ -150,12 +150,26 @@ function setTimer() {
 
 }
 
-var bridge = new OculusBridge({
-    "onOrientationUpdate" : function(quatValues) {
-        giantSquid.quaternion.set(quatValues.x, quatValues.y, quatValues.z, quatValues.w);
+var bridge = new OculusBridge( {
+    "onConnect" : function() { 
+        console.log("we are connected!");
+    },
+    "onDisconnect" : function() {
+        console.log("good bye Oculus.");
+    },
+    "onConfigUpdate" : function(config) {
+        console.log("Field of view: " + config.FOV);
+    },
+    "onOrientationUpdate" : function(quatValues){
+        var values = [quatValues.x, quatValues.y, quatValues.z, quatValues.w];
+        console.log("Orientation: " + values.join(", "));
+    }
+    "onAccelerationUpdate" : function(accelValues){
+        var values = [accelValues.x, accelValues.y, accelValues.z];
+        console.log("Acceleration: " + values.join(", "));
     }
 });
-bridge.connect();
 
+bridge.connect();
 google.maps.event.addDomListener(window, 'load', initialize);
     
