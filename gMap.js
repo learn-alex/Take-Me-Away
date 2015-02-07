@@ -184,14 +184,29 @@ var bridge = new OculusBridge( {
           heading: -180*quatValues.y,
           pitch: 180*quatValues.x
         });
-        console.log("outside: " + go);
-        if(go) {
-            console.log("moving forward");
-            moveForward();
-        }
+        // console.log("outside: " + go);
+        // if(go) {
+        //     console.log("moving forward");
+        //     moveForward();
+        // }
     }
 });
 
 bridge.connect();
+
+function step() {
+     var curr;
+  for(i=0; i < myPano.links.length; i++) {
+    var differ = difference(myPano.links[i]);
+    if(curr == undefined) {
+      curr = myPano.links[i];
+    }
+
+    if(difference(curr) > difference(myPano.links[i])) {
+      curr = curr = myPano.links[i];
+    }
+  }
+  myPano.setPano(curr.pano);
+}
 google.maps.event.addDomListener(window, 'load', initialize);
     
