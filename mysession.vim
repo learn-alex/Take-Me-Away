@@ -27,10 +27,10 @@ if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
 endif
 set shortmess=aoO
 badd +1 index.html
-badd +1 gMap.js
+badd +81 gMap.js
 badd +1 basic.html
-badd +0 style.css
-badd +0 styles.css
+badd +1 style.css
+badd +1 styles.css
 args index.html
 edit gMap.js
 set splitbelow splitright
@@ -46,9 +46,9 @@ set nosplitbelow
 set nosplitright
 wincmd t
 set winheight=1 winwidth=1
-exe '1resize ' . ((&lines * 24 + 26) / 52)
+exe '1resize ' . ((&lines * 34 + 26) / 52)
 exe 'vert 1resize ' . ((&columns * 98 + 98) / 197)
-exe '2resize ' . ((&lines * 25 + 26) / 52)
+exe '2resize ' . ((&lines * 15 + 26) / 52)
 exe 'vert 2resize ' . ((&columns * 98 + 98) / 197)
 exe 'vert 3resize ' . ((&columns * 98 + 98) / 197)
 argglobal
@@ -152,7 +152,7 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 3 - ((1 * winheight(0) + 12) / 24)
+let s:l = 3 - ((2 * winheight(0) + 17) / 34)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
@@ -261,11 +261,11 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 4 - ((3 * winheight(0) + 12) / 25)
+let s:l = 9 - ((8 * winheight(0) + 7) / 15)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-4
+9
 normal! 0
 wincmd w
 argglobal
@@ -378,9 +378,9 @@ normal! zt
 normal! 04|
 wincmd w
 2wincmd w
-exe '1resize ' . ((&lines * 24 + 26) / 52)
+exe '1resize ' . ((&lines * 34 + 26) / 52)
 exe 'vert 1resize ' . ((&columns * 98 + 98) / 197)
-exe '2resize ' . ((&lines * 25 + 26) / 52)
+exe '2resize ' . ((&lines * 15 + 26) / 52)
 exe 'vert 2resize ' . ((&columns * 98 + 98) / 197)
 exe 'vert 3resize ' . ((&columns * 98 + 98) / 197)
 tabnext 1
