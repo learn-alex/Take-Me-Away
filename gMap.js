@@ -62,9 +62,8 @@ function initialize() {
 
     // marker.setPosition(myLatlng);
 
-    map.setStreetView(myPanoRight);
-	myPanoLeft.setPostion(myPanoRight);
 
+    map.setStreetView(myPanoRight);
 }
 
 function calcDest() {
@@ -86,7 +85,9 @@ function calcDest() {
     if (status == google.maps.DirectionsStatus.OK) {
       directionsDisplay.setDirections(result);
       showSteps(result);
-    } else {
+      printSteps(result);
+	  streetMove(result);
+	} else {
         // window.alert("invalid loc");
     }
   });
@@ -94,6 +95,35 @@ function calcDest() {
   // setTimer();
   // moveForward = true;
   go = !go;
+
+}
+
+function streetMove(directionResult) {
+	var myRoute = directionResult.routes[0].legs[0];
+	var str;
+	for (var i = 0; i < myRoute.steps.length; i++) {
+		for (var j = 0; j < myRoute.steps[i].path.length; j++) {
+			//var cnt = new google.maps.LatLng(myRoute.steps[i].path[j]);
+			var temp = (i+1) * (j+1);
+			str += "<p>" + j + "---" + myRoute.steps[i].path[j] + "</p>"; 
+			//myPanoLeft.setPosition(cnt);
+			//map.setStreetView(myPanoRight);	
+		}
+	}	
+	document.getElementById('dir-canvas').innerHTML += str;
+}
+
+function printSteps(directionResult) {
+	var myRoute = directionResult.routes[0].legs[0];
+	
+	var str = "";
+	for (var i = 0; i < myRoute.steps.length; i++) {
+		var temp = i + 1;
+		str += "<p>" + temp + ") " + myRoute.steps[i].instructions + "</p>";
+	}
+
+	document.getElementById('dir-canvas').innerHTML += str;
+
 
 }
 
