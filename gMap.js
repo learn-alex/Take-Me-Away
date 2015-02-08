@@ -195,6 +195,7 @@ var bridge = new OculusBridge( {
 bridge.connect();
 
 function step() {
+    setInterval(function() {
      var curr;
   for(i=0; i < myPano.links.length; i++) {
     var differ = difference(myPano.links[i]);
@@ -207,6 +208,7 @@ function step() {
     }
   }
   myPano.setPano(curr.pano);
+    }, 300);
 }
 google.maps.event.addDomListener(window, 'load', initialize);
     
