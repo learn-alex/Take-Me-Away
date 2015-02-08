@@ -101,34 +101,29 @@ function calcDest() {
 function streetMove(directionResult) {
 	var myRoute = directionResult.routes[0].legs[0];
 	var str;
-	for (var i = 0; i < myRoute.steps.length; i++) {
-		for (var j = 0; j < myRoute.steps[i].path.length; j++) {
-			//var home = new google.maps.LatLng(34.16284, -118.75435000000002);
-			var lat = myRoute.steps[i].path[j].lat();
-			var lng = myRoute.steps[i].path[j].lng();
 
-			//var cnt = new google.maps.LatLng(lat, lng);
-			//var temp = (i+1) * (j+1);
-			//str += "<p>" + j + "---" + myRoute.steps[i].path[j] + "</p>"; 
-			//myPanoLeft.setPosition(cnt)
-			window.setTimeout(function(){
-				//var lat = myRoute.steps[i].path[j].lat();
-				//var lng = myRoute.steps[i].path[j].lng();
-				animate(lat,lng);
-				console.log(j);
-				}
-				, 3000);
-			var timestart = Date.now();
-			var timeend = Date.now();
-			while ((timeend - timestart) < 1){
-				timeend = Date.now();
-				console.log("in while loop");
-			}
-			///map.setStreetView(myPanoRight);	
+  var i = 0;
+  var outer = setInterval(function() {
+    animate(myRoute.steps[i].start_location.k, myRoute.steps[i].start_location.D);
+
+    i++;
+    if(i == myRoute.steps.length) {
+      clearInterval(outer);
+    }
+  }, 1000);
+
+	// for (var i = 0; i < myRoute.steps.length; i++) {
+	// 	console.log(myRoute.steps[i].start_location.k + "\t" + myRoute.steps[i].start_location.D);
+
+
+ //  //   for (var j = 0; j < myRoute.steps[i].path.length; j++) {
+	// 	// 	//var home = new google.maps.LatLng(34.16284, -118.75435000000002);
+	// 	// 	var lat = myRoute.steps[i].path[j].lat();
+	// 	// 	var lng = myRoute.steps[i].path[j].lng();
+	// 	// 	animate(lat,lng);
 				
-		}
-	}	
-	//document.getElementById('dir-canvas').innerHTML += str;
+	// 	// }
+	// }	
 }
 
 function animate(lat, lng) {	
