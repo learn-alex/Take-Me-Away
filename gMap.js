@@ -17,7 +17,7 @@ var go = false;
 var moveForward;
 
 function initialize() {
-    myLatlng = new google.maps.LatLng(34.12942,-118.775398);
+    myLatlng = new google.maps.LatLng(40.7577, -73.9857);
 
     directionsDisplay = new google.maps.DirectionsRenderer();
     stepDisplay = new google.maps.InfoWindow();
@@ -103,14 +103,42 @@ function streetMove(directionResult) {
 	var str;
 	for (var i = 0; i < myRoute.steps.length; i++) {
 		for (var j = 0; j < myRoute.steps[i].path.length; j++) {
-			//var cnt = new google.maps.LatLng(myRoute.steps[i].path[j]);
-			var temp = (i+1) * (j+1);
-			str += "<p>" + j + "---" + myRoute.steps[i].path[j] + "</p>"; 
-			//myPanoLeft.setPosition(cnt);
-			//map.setStreetView(myPanoRight);	
+			//var home = new google.maps.LatLng(34.16284, -118.75435000000002);
+			var lat = myRoute.steps[i].path[j].lat();
+			var lng = myRoute.steps[i].path[j].lng();
+
+			//var cnt = new google.maps.LatLng(lat, lng);
+			//var temp = (i+1) * (j+1);
+			//str += "<p>" + j + "---" + myRoute.steps[i].path[j] + "</p>"; 
+			//myPanoLeft.setPosition(cnt)
+			window.setTimeout(function(){
+				//var lat = myRoute.steps[i].path[j].lat();
+				//var lng = myRoute.steps[i].path[j].lng();
+				animate(lat,lng);
+				console.log(j);
+				}
+				, 3000);
+			var timestart = Date.now();
+			var timeend = Date.now();
+			while ((timeend - timestart) < 1){
+				timeend = Date.now();
+				console.log("in while loop");
+			}
+			///map.setStreetView(myPanoRight);	
+				
 		}
 	}	
-	document.getElementById('dir-canvas').innerHTML += str;
+	//document.getElementById('dir-canvas').innerHTML += str;
+}
+
+function animate(lat, lng) {	
+			//var lat = myPath.lat();
+			//var lng = myPath.lng();
+
+			var cnt = new google.maps.LatLng(lat, lng);
+			//str += "<p>" + myPath + "</p>"; 
+			myPanoLeft.setPosition(cnt);
+			myPanoRight.setPosition(cnt);
 }
 
 function printSteps(directionResult) {
