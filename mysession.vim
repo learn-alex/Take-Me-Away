@@ -16,6 +16,7 @@ set helplang=en
 set history=50
 set hlsearch
 set ruler
+set tabstop=4
 set viminfo='20,\"50
 let s:so_save = &so | let s:siso_save = &siso | set so=0 siso=0
 let v:this_session=expand("<sfile>:p")
@@ -25,9 +26,9 @@ if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
   let s:wipebuf = bufnr('%')
 endif
 set shortmess=aoO
-badd +13 basic.html
+badd +14 basic.html
 badd +1 gMaps.js
-badd +3 gMap.js
+badd +51 gMap.js
 badd +1 styles.css
 args basic.html
 edit gMap.js
@@ -44,11 +45,11 @@ set nosplitbelow
 set nosplitright
 wincmd t
 set winheight=1 winwidth=1
-exe 'vert 1resize ' . ((&columns * 98 + 98) / 197)
-exe '2resize ' . ((&lines * 24 + 26) / 52)
-exe 'vert 2resize ' . ((&columns * 98 + 98) / 197)
-exe '3resize ' . ((&lines * 25 + 26) / 52)
-exe 'vert 3resize ' . ((&columns * 98 + 98) / 197)
+exe 'vert 1resize ' . ((&columns * 135 + 135) / 270)
+exe '2resize ' . ((&lines * 41 + 42) / 85)
+exe 'vert 2resize ' . ((&columns * 134 + 135) / 270)
+exe '3resize ' . ((&lines * 41 + 42) / 85)
+exe 'vert 3resize ' . ((&columns * 134 + 135) / 270)
 argglobal
 setlocal keymap=
 setlocal noarabic
@@ -141,7 +142,7 @@ setlocal synmaxcol=3000
 if &syntax != 'javascript'
 setlocal syntax=javascript
 endif
-setlocal tabstop=8
+setlocal tabstop=4
 setlocal tags=
 setlocal textwidth=0
 setlocal thesaurus=
@@ -151,12 +152,12 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 9 - ((8 * winheight(0) + 25) / 50)
+let s:l = 66 - ((34 * winheight(0) + 41) / 83)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-9
-normal! 02|
+66
+normal! 021|
 wincmd w
 argglobal
 edit basic.html
@@ -260,12 +261,12 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 12 - ((11 * winheight(0) + 12) / 24)
+let s:l = 19 - ((18 * winheight(0) + 20) / 41)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-12
-normal! 022|
+19
+normal! 021|
 wincmd w
 argglobal
 edit styles.css
@@ -369,19 +370,18 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 1 - ((0 * winheight(0) + 12) / 25)
+let s:l = 1 - ((0 * winheight(0) + 20) / 41)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
 1
 normal! 012|
 wincmd w
-2wincmd w
-exe 'vert 1resize ' . ((&columns * 98 + 98) / 197)
-exe '2resize ' . ((&lines * 24 + 26) / 52)
-exe 'vert 2resize ' . ((&columns * 98 + 98) / 197)
-exe '3resize ' . ((&lines * 25 + 26) / 52)
-exe 'vert 3resize ' . ((&columns * 98 + 98) / 197)
+exe 'vert 1resize ' . ((&columns * 135 + 135) / 270)
+exe '2resize ' . ((&lines * 41 + 42) / 85)
+exe 'vert 2resize ' . ((&columns * 134 + 135) / 270)
+exe '3resize ' . ((&lines * 41 + 42) / 85)
+exe 'vert 3resize ' . ((&columns * 134 + 135) / 270)
 tabnext 1
 if exists('s:wipebuf')
   silent exe 'bwipe ' . s:wipebuf

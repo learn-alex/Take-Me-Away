@@ -2,19 +2,27 @@ html, body {
 	height:100%;
 }
 
-#map-canvas, #street-canvas {
-	height:75%;
+#map-canvas, #street-canvas_right, #street-canvas_left {
+	height:80%;
 	width:50%;
 	padding: 0;
 	margin: 0;
 	background:green;
 }
 
+#street { 
+	padding-top:5%;
+	height:100vh;
+	width:100%;
+}
+
 .left {
     float:left;
+    left:40px;
 }
 
 .right {
     float: right;
+    right:40px;
 }
 

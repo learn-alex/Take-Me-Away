@@ -45,9 +45,14 @@ function initialize() {
     }
     // directionsDisplay = new google.maps.DirectionsRenderer(rendererOptions);
 
- 	myPano = new google.maps.StreetViewPanorama(document.getElementById('street-canvas'),
+ 	myPanoRight = new google.maps.StreetViewPanorama(document.getElementById('street-canvas_right'),
       		panoramaOptions);
-  	myPano.setVisible(true);
+  	myPanoRight.setVisible(true);
+
+	myPanoLeft = new google.maps.StreetViewPanorama(document.getElementById('street-canvas_left'),
+      		panoramaOptions);
+  	myPanoLeft.setVisible(true);
+
 
   //   var marker = new google.maps.Marker({
   //     position: myLatlng,
@@ -57,7 +62,8 @@ function initialize() {
 
     // marker.setPosition(myLatlng);
 
-    map.setStreetView(myPano);
+    map.setStreetView(myPanoRight);
+	myPanoLeft.setPostion(myPanoRight);
 
 }
 
@@ -103,7 +109,7 @@ function showSteps(directionResult) {
         var marker = new google.maps.Marker({
             position: myRoute.steps[i].start_location,
             size: 1000,
-            map: myPano
+            map: myPanoRight
         });
         attachInstructionText(marker, myRoute.steps[i].instructions);
         markerArray[i] = marker;
@@ -125,17 +131,17 @@ function difference(link) {
 
 function moveForward() {
   var curr;
-  for(i=0; i < myPano.links.length; i++) {
-    var differ = difference(myPano.links[i]);
+  for(i=0; i < myPanoRight.links.length; i++) {
+    var differ = difference(myPanoRight.links[i]);
     if(curr == undefined) {
-      curr = myPano.links[i];
+      curr = myPanoRight.links[i];
     }
 
-    if(difference(curr) > difference(myPano.links[i])) {
-      curr = curr = myPano.links[i];
+    if(difference(curr) > difference(myPanoRight.links[i])) {
+      curr = curr = myPanoRight.links[i];
     }
   }
-  myPano.setPano(curr.pano);
+  myPanoRight.setPano(curr.pano);
 }
 
 var interval; 
@@ -181,10 +187,15 @@ var bridge = new OculusBridge( {
         // giantSquid.quaternion.set(quatValues.x, quatValues.y, quatValues.z, quatValues.w);
         // console.log("X: " + 180*quatValues.x + "Y: " + 180*quatValues.y + "Z: " + 180*quatValues.z + "W: " + 180*quatValues.w);
 
-        myPano.setPov({
+        myPanoRight.setPov({
           heading: -180*quatValues.y,
           pitch: 180*quatValues.x
         });
+		myPanoLeft.setPov({
+          heading: -180*quatValues.y,
+          pitch: 180*quatValues.x
+        });
+       
         // console.log("outside: " + go);
         // if(go) {
         //     console.log("moving forward");
