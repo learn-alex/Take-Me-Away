@@ -1,0 +1,165 @@
+<html>
+<head>
+<title>Take Me Away...</title>
+
+
+
+<style>
+#bg {
+    height:100%;
+    width:100%;
+    background: url(home_bg.jpg) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+
+  background-size: cover;
+}
+#title {
+    position:absolute;
+    top:12%;
+    left:35%;
+}
+#inputs {
+    position:relative;
+    top:50%;
+    left:50%;
+}
+
+#form-main{
+    position:relative;
+    top:20%;
+    width:100%;
+    float:left;
+    padding-top:0px;
+}
+
+#form-div {
+    background-color:rgba(72,72,72,0.4);
+    padding-left:35px;
+    padding-right:35px;
+    padding-top:35px;
+    padding-bottom:50px;
+    width: 450px;
+    float: left;
+    left: 50%;
+    position: absolute;
+  margin-top:30px;
+    margin-left: -260px;
+  -moz-border-radius: 7px;
+  -webkit-border-radius: 7px;
+}
+
+.feedback-input {
+    color:#3c3c3c;
+    font-family: Helvetica, Arial, sans-serif;
+  font-weight:500;
+    font-size: 18px;
+    border-radius: 0;
+    line-height: 22px;
+    background-color: #fbfbfb;
+    padding: 13px 13px 13px 54px;
+    margin-bottom: 10px;
+    width:100%;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+  border: 3px solid rgba(0,0,0,0);
+}
+
+.feedback-input:focus{
+    background: #fff;
+    box-shadow: 0;
+    border: 3px solid #3498db;
+    color: #3498db;
+    outline: none;
+  padding: 13px 13px 13px 54px;
+}
+
+.focused{
+    color:#30aed6;
+    border:#30aed6 solid 3px;
+}
+#button-blue{
+    font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+    float:left;
+    width: 100%;
+    border: #fbfbfb solid 4px;
+    cursor:pointer;
+    background-color: #3498db;
+    color:white;
+    font-size:24px;
+    padding-top:22px;
+    padding-bottom:22px;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    transition: all 0.3s;
+  margin-top:-4px;
+  font-weight:700;
+}
+
+#button-blue:hover{
+    background-color: rgba(0,0,0,0);
+    color: #67A1A2;
+}
+    
+.submit:hover {
+    color: #3498db;
+}
+    
+.ease {
+    width: 0px;
+    height: 74px;
+    background-color: #fbfbfb;
+    -webkit-transition: .3s ease;
+    -moz-transition: .3s ease;
+    -o-transition: .3s ease;
+    -ms-transition: .3s ease;
+    transition: .3s ease;
+}
+
+.submit:hover .ease{
+  width:100%;
+  background-color:white;
+}
+</style>
+
+<script>
+    function go() {
+        window.location.href = 'basic.html' + "#" + document.getElementById('start').value + "#" + document.getElementById('finish').value;
+    }
+
+</script>
+</head>
+
+<body>
+<div id="bg">
+    <div id="title"><font color="white" face="verdana" size="15">Take Me Away</font></div>
+    
+    <div id="form-main">
+    <div id="form-div">
+    <form class="form" id="form1">
+      
+      <p class="str">
+        <input id="start" name="name" type="text" class="feedback-input" placeholder="From" />
+      </p>
+      
+      <p class="fin">
+        <input id="finish" name="email" type="text" class="feedback-input" placeholder="To" />
+      </p>
+      
+      
+      <div class="submit">
+        <form action="basic.html"><input type="button" onclick="go()" value="GO" id="button-blue"/>
+            <a href="google.com"></a></form>
+        <div class="ease"></div>
+      </div>
+    </form>
+  </div>
+</div>
+</div>
+</body>
+
+</html>

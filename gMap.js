@@ -70,14 +70,25 @@ function initialize() {
     map.setStreetView(myPanoRight);
 }
 
+var start;
+var end;
+window.onload = function() {
+  console.log(window.location.hash)
+  start = window.location.hash.substring(1, window.location.hash.indexOf('#', 2));
+  end = window.location.hash.substring(window.location.hash.indexOf('#', 2) + 1);
+  console.log(start);
+  console.log(end);
+  calcDest();
+}
+
 function calcDest() {
 
     for (var i = 0; i < markerArray.length; i++) {
         markerArray[i].setMap(null);
     }
 
-    var start = document.getElementById('start').value;
-    var end = document.getElementById('finish').value; 
+    // var start = document.getElementById('start').value;
+    // var end = document.getElementById('finish').value; 
 
     var request = {
         origin:start,
@@ -173,7 +184,7 @@ function streetMove(directionResult) {
     if(index == pathArray.length) {
       clearInterval(outer);
     }
-  }, 100);
+  }, 500);
 }
 
 function animate(lat, lng) {	
