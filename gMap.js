@@ -181,7 +181,7 @@ function streetMove(directionResult) {
     if(index == pathArray.length) {
       clearInterval(outer);
     }
-  }, 300);
+  }, 100);
 }
 
 function animate(lat, lng) {	
