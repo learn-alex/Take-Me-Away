@@ -15,6 +15,10 @@ var stepDisplay;
 var myLatlng;
 var go = false;
 var moveForward;
+var stop = true;
+var index = 0;
+var outer;
+var globalDirection;
 
 function initialize() {
     myLatlng = new google.maps.LatLng(40.7577, -73.9857);
@@ -87,6 +91,7 @@ function calcDest() {
       showSteps(result);
       printSteps(result);
 	  streetMove(result);
+    globalDirection = result;
 	} else {
         // window.alert("invalid loc");
     }
@@ -107,7 +112,8 @@ function midpoint(c1, c2) {
 }
 
 function streetMove(directionResult) {
-	var myRoute = directionResult.routes[0].legs[0];
+	// stop = false;
+  var myRoute = directionResult.routes[0].legs[0];
 	var str;
   var pathArray = [];
 
@@ -139,15 +145,15 @@ function streetMove(directionResult) {
       var c5 = new Coor(nextLat, nextLng);
       // animate(lat,lng);
       pathArray.push(c1);
-      console.log("C1: " + c1.lat + ", " + c1.lon);
+      // console.log("C1: " + c1.lat + ", " + c1.lon);
 
-      console.log("C2: " + c2.lat + ", " + c2.lon);
+      // console.log("C2: " + c2.lat + ", " + c2.lon);
       pathArray.push(c2);
       pathArray.push(c3);
-      console.log("C3: " + c3.lat + ", " + c3.lon);
+      // console.log("C3: " + c3.lat + ", " + c3.lon);
 
-      console.log("C4: " + c4.lat + ", " + c4.lon);
-      console.log("C5: " + c5.lat + ", " + c5.lon);
+      // console.log("C4: " + c4.lat + ", " + c4.lon);
+      // console.log("C5: " + c5.lat + ", " + c5.lon);
 
       pathArray.push(c4);
       pathArray.push(c5);
@@ -158,29 +164,16 @@ function streetMove(directionResult) {
     }  
 
     console.log("LENGTH: " + pathArray.length);
-  var i = 0;
-  var outer = setInterval(function() {
+  // var index = 0;
+  outer = setInterval(function() {
     // animate(myRoute.steps[i].start_location.k, myRoute.steps[i].start_location.D);
-    animate(pathArray[i].lat, pathArray[i].lon);
+    animate(pathArray[index].lat, pathArray[index].lon);
     // console.log(i);
-    i++;
-    if(i == pathArray.length) {
+    index++;
+    if(index == pathArray.length) {
       clearInterval(outer);
     }
   }, 100);
-
-	// for (var i = 0; i < myRoute.steps.length; i++) {
-	// 	console.log(myRoute.steps[i].start_location.k + "\t" + myRoute.steps[i].start_location.D);
-
-
- //  //   for (var j = 0; j < myRoute.steps[i].path.length; j++) {
-	// 	// 	//var home = new google.maps.LatLng(34.16284, -118.75435000000002);
-	// 	// 	var lat = myRoute.steps[i].path[j].lat();
-	// 	// 	var lng = myRoute.steps[i].path[j].lng();
-	// 	// 	animate(lat,lng);
-				
-	// 	// }
-	// }	
 }
 
 function animate(lat, lng) {	
@@ -332,5 +325,20 @@ function step() {
   myPano.setPano(curr.pano);
     }, 300);
 }
+
+window.addEventListener("keydown", function (event) {
+  console.log(event.which);
+  if(event.which == 88) {
+    console.log("stop");
+    if(stop) {
+      clearInterval(outer);
+      stop = !stop;
+    } else {
+      streetMove(globalDirection);
+      stop = !stop;
+    }
+  }
+}, true);
+
 google.maps.event.addDomListener(window, 'load', initialize);
     
