@@ -12,10 +12,10 @@ function onPoseEdge(pose, edge)
         if (pose == "fist") then
             leftClick()
         elseif (pose == "fingersSpread") then
-            stopMouseControl()
+            --stopMouseControl()
         elseif (pose == "doubleTap") then
             --myo.vibrate("short")
-            startMouseControl()
+            --startMouseControl()
         elseif (pose == "waveIn") then
             centreRoll = myo.getRoll()
 
@@ -27,13 +27,13 @@ function onPoseEdge(pose, edge)
 end
 
 function startMouseControl()
-    myo.controlMouse(true);
+    --myo.controlMouse(true);
 end
 
 function leftClick()
     --myo.vibrate("short")
-    myo.debug("click")
-    myo.mouse("left", "click")
+    --myo.debug("click")
+    --myo.mouse("left", "click")
     --if (mouseClicked) then
     --  myo.mouse("left", "up")
     --  mouseClicked = false
@@ -41,11 +41,11 @@ function leftClick()
     --  myo.mouse("left", "down")
     --  mouseClicked = true
     --end
-
+    myo.keyboard("x","press")
 end
 
 function stopMouseControl()
-    myo.controlMouse(false);
+    --myo.controlMouse(false);
 end
 
 function onPeriodic()
@@ -73,7 +73,7 @@ end
 
 function onForegroundWindowChange(app, title)
     --myo.debug("onForegroundWindowChange: " .. app .. ", " .. title)
-    myo.controlMouse(true);
+    --myo.controlMouse(true);
     myo.setLockingPolicy("none")
     return true
 end
