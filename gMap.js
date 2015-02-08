@@ -98,19 +98,42 @@ function calcDest() {
 
 }
 
+function Coor (lat, lon) {
+  this.lat = lat;
+  this.lon =  lon;
+}
+
 function streetMove(directionResult) {
 	var myRoute = directionResult.routes[0].legs[0];
 	var str;
+  var pathArray = [];
 
+    for (var i = 0; i < myRoute.steps.length; i++) {
+     console.log(myRoute.steps[i].start_location.k + "\t" + myRoute.steps[i].start_location.D);
+
+
+      for (var j = 0; j < myRoute.steps[i].path.length; j++) {
+      //var home = new google.maps.LatLng(34.16284, -118.75435000000002);
+      var lat = myRoute.steps[i].path[j].lat();
+      var lng = myRoute.steps[i].path[j].lng();
+      var c = new Coor(lat, lng);
+      // animate(lat,lng);
+      pathArray.push(c);
+          
+      }
+    }  
+
+    console.log("LENGTH: " + pathArray.length);
   var i = 0;
   var outer = setInterval(function() {
-    animate(myRoute.steps[i].start_location.k, myRoute.steps[i].start_location.D);
-
+    // animate(myRoute.steps[i].start_location.k, myRoute.steps[i].start_location.D);
+    animate(pathArray[i].lat, pathArray[i].lon);
+    console.log(i);
     i++;
-    if(i == myRoute.steps.length) {
+    if(i == pathArray.length) {
       clearInterval(outer);
     }
-  }, 1000);
+  }, 300);
 
 	// for (var i = 0; i < myRoute.steps.length; i++) {
 	// 	console.log(myRoute.steps[i].start_location.k + "\t" + myRoute.steps[i].start_location.D);
