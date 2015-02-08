@@ -333,8 +333,8 @@ window.addEventListener("keydown", function (event) {
     if(stop) {
       clearInterval(outer);
       stop = !stop;
-    } else {+++++++
-      streetMove(globalDirectio
+    } else {
+      streetMove(globalDirection)
       stop = !stop;
     }
   }
