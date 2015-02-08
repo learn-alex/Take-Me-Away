@@ -103,22 +103,56 @@ function Coor (lat, lon) {
   this.lon =  lon;
 }
 
+function midpoint(c1, c2) {
+}
+
 function streetMove(directionResult) {
 	var myRoute = directionResult.routes[0].legs[0];
 	var str;
   var pathArray = [];
 
     for (var i = 0; i < myRoute.steps.length; i++) {
-     console.log(myRoute.steps[i].start_location.k + "\t" + myRoute.steps[i].start_location.D);
+     // console.log(myRoute.steps[i].start_location.k + "\t" + myRoute.steps[i].start_location.D);
 
 
-      for (var j = 0; j < myRoute.steps[i].path.length; j++) {
+      for (var j = 0; j < myRoute.steps[i].path.length - 1; j++) {
       //var home = new google.maps.LatLng(34.16284, -118.75435000000002);
       var lat = myRoute.steps[i].path[j].lat();
+      var nextLat = myRoute.steps[i].path[j+1].lat();
+      var mid2Lat = (lat + nextLat)/2;
+      var mid1Lat = (lat + mid2Lat) / 2;
+      var mid3Lat = (mid2Lat + nextLat) / 2;
+
+
+
+
       var lng = myRoute.steps[i].path[j].lng();
-      var c = new Coor(lat, lng);
+      var nextLng = myRoute.steps[i].path[j+1].lng();
+      var mid2Lng = (lng + nextLng)/2;
+      var mid1Lng = (lng + mid2Lng) / 2;
+      var mid3Lng = (mid2Lng + nextLng) / 2;
+
+      var c1 = new Coor(lat, lng);
+      var c2 = new Coor(mid1Lat, mid1Lng);
+      var c3 = new Coor(mid2Lat, mid2Lng);
+      var c4 = new Coor(mid3Lat, mid3Lng);
+      var c5 = new Coor(nextLat, nextLng);
       // animate(lat,lng);
-      pathArray.push(c);
+      pathArray.push(c1);
+      console.log("C1: " + c1.lat + ", " + c1.lon);
+
+      console.log("C2: " + c2.lat + ", " + c2.lon);
+      pathArray.push(c2);
+      pathArray.push(c3);
+      console.log("C3: " + c3.lat + ", " + c3.lon);
+
+      console.log("C4: " + c4.lat + ", " + c4.lon);
+      console.log("C5: " + c5.lat + ", " + c5.lon);
+
+      pathArray.push(c4);
+      pathArray.push(c5);
+
+
           
       }
     }  
@@ -128,12 +162,12 @@ function streetMove(directionResult) {
   var outer = setInterval(function() {
     // animate(myRoute.steps[i].start_location.k, myRoute.steps[i].start_location.D);
     animate(pathArray[i].lat, pathArray[i].lon);
-    console.log(i);
+    // console.log(i);
     i++;
     if(i == pathArray.length) {
       clearInterval(outer);
     }
-  }, 300);
+  }, 100);
 
 	// for (var i = 0; i < myRoute.steps.length; i++) {
 	// 	console.log(myRoute.steps[i].start_location.k + "\t" + myRoute.steps[i].start_location.D);
