@@ -25,10 +25,10 @@ if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
   let s:wipebuf = bufnr('%')
 endif
 set shortmess=aoO
-badd +0 basic.html
-badd +0 gMaps.js
-badd +0 gMap.js
-badd +0 styles.css
+badd +13 basic.html
+badd +1 gMaps.js
+badd +3 gMap.js
+badd +1 styles.css
 args basic.html
 edit gMap.js
 set splitbelow splitright
@@ -113,7 +113,8 @@ setlocal matchpairs=(:),{:},[:]
 setlocal modeline
 setlocal modifiable
 setlocal nrformats=octal,hex
-setlocal nonumber
+set number
+setlocal number
 setlocal numberwidth=4
 setlocal omnifunc=javascriptcomplete#CompleteJS
 setlocal path=
@@ -150,11 +151,11 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 3 - ((2 * winheight(0) + 25) / 50)
+let s:l = 9 - ((8 * winheight(0) + 25) / 50)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-3
+9
 normal! 02|
 wincmd w
 argglobal
@@ -259,12 +260,12 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 18 - ((17 * winheight(0) + 12) / 24)
+let s:l = 12 - ((11 * winheight(0) + 12) / 24)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-18
-normal! 0
+12
+normal! 022|
 wincmd w
 argglobal
 edit styles.css
@@ -368,12 +369,12 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 9 - ((8 * winheight(0) + 12) / 25)
+let s:l = 1 - ((0 * winheight(0) + 12) / 25)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-9
-normal! 09|
+1
+normal! 012|
 wincmd w
 2wincmd w
 exe 'vert 1resize ' . ((&columns * 98 + 98) / 197)

@@ -8,7 +8,8 @@
 var directionsDisplay;
 var directionsService = new google.maps.DirectionsService();
 var map;
-var myPano;
+var myPanoLeft;
+var myPanoRight;
 var markerArray = [];
 var stepDisplay;
 var myLatlng;
