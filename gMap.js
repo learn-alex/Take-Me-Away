@@ -73,11 +73,8 @@ function initialize() {
 var start;
 var end;
 window.onload = function() {
-  console.log(window.location.hash)
   start = window.location.hash.substring(1, window.location.hash.indexOf('#', 2));
   end = window.location.hash.substring(window.location.hash.indexOf('#', 2) + 1);
-  console.log(start);
-  console.log(end);
   calcDest();
 }
 
