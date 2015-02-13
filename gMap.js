@@ -101,7 +101,7 @@ function calcDest() {
 	  streetMove(result);
     globalDirection = result;
 	} else {
-        // window.alert("invalid loc");
+           window.alert("invalid loc");
     }
   });
 
