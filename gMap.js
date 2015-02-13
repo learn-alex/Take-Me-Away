@@ -70,8 +70,8 @@ function initialize() {
     map.setStreetView(myPanoRight);
 }
 
-var start;
-var end;
+//var start;
+//var end;
 //window.onload = function() {
 //  start = window.location.hash.substring(1, window.location.hash.indexOf('#', 2));
 //  end = window.location.hash.substring(window.location.hash.indexOf('#', 2) + 1);
