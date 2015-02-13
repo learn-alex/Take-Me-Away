@@ -84,8 +84,8 @@ function calcDest() {
         markerArray[i].setMap(null);
     }
 
-    // var start = document.getElementById('start').value;
-    // var end = document.getElementById('finish').value; 
+    var start = document.getElementById('start').value;
+    var end = document.getElementById('finish').value; 
 
     var request = {
         origin:start,
