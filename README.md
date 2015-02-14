@@ -1,4 +1,5 @@
-# hopHacks_spring2015
+# Take Me Away
+Hopkins Hackathon, Spring 2015
 web development, JavaScript, Google Maps API, Oculus Rift, Myo Armband, etc.
 -----------------------------------
 Project name: Take Me Away...
